@@ -14,37 +14,20 @@
 /*!**********************!*\
   !*** ./app/index.ts ***!
   \**********************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ (() => {
 
-eval("\nconsole.log(__webpack_require__.g);\n\n\n//# sourceURL=webpack://pacman/./app/index.ts?");
+eval("\nif (\"WebSocket\" in window) {\n    const protocol = window.location.protocol === \"http:\" ? \"ws://\" : \"wss://\";\n    const address = protocol + window.location.host;\n    function connectWebSocket() {\n        const socket = new WebSocket(address);\n        socket.addEventListener(\"message\", message => {\n            try {\n                const content = JSON.parse(message.data);\n                switch (content.type) {\n                    case 'reload':\n                        const update = sessionStorage.getItem('hot-update');\n                        sessionStorage.setItem('hot-update', \"0\");\n                        if (update !== \"0\")\n                            window.location.reload();\n                        break;\n                    default: return;\n                }\n            }\n            catch (error) {\n                console.error(error);\n            }\n        });\n        socket.addEventListener(\"error\", e => console.error(\"error\", e));\n        socket.addEventListener('close', () => {\n            sessionStorage.setItem('hot-update', \"1\");\n            console.error(new Error(\"Error trying access : \" + address));\n            setTimeout(connectWebSocket, 4e3);\n            setInterval(connectWebSocket, 10e3);\n        });\n    }\n    connectWebSocket();\n}\nelse\n    alert(\"You should upgrade your browser.\");\n\n\n//# sourceURL=webpack://pacman/./app/index.ts?");
 
 /***/ })
 
 /******/ 	});
-/************************************************************************/
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./app/index.ts"](0, __webpack_exports__, __webpack_require__);
+/******/ 	__webpack_modules__["./app/index.ts"]();
 /******/ 	
 /******/ })()
 ;
