@@ -7,11 +7,13 @@
     "start": "tsc && node dist/server.js",
     "dev": "tsc && node dist/index.js"
   },
-  "keywords": ["TS", "Pacman"],
+  "keywords": [
+    "TS",
+    "Pacman"
+  ],
   "author": "Ezequiel Dev",
   "license": "ISC",
   "dependencies": {
-    "@types/chalk": "^2.2.0",
     "@types/node": "^20.3.0",
     "@types/ws": "^8.5.5",
     "ws": "^8.13.0"
