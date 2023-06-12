@@ -65,6 +65,8 @@ package-lock.json
 # Build files
 dist
 bundle.js
+*.map
+public/style.css
 
 # Serverless directories
 .serverless/
