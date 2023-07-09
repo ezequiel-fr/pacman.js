@@ -5,7 +5,8 @@ function env() {
     let path = resolve(process.cwd(), '.env');
 
     const parse = (src: Buffer | string) => {
-        const LINE = /(?:^|^)\s*(?:export\s+)?([\w.-]+)(?:\s*=\s*?|:\s+?)(\s*'(?:\\'|[^'])*'|\s*"(?:\\"|[^"])*"|\s*`(?:\\`|[^`])*`|[^#\r\n]+)?\s*(?:#.*)?(?:$|$)/mg;
+        // eslint-disable-next-line
+        const LINE = /(?:^|^)\s*(?:export\s+)?([\w.-]+)(?:\s*=\s*?|:\s+?)(\s*'(?:\\'|[^'])*'|\s*"(?:\\"|[^"])*"|\s*`(?:\\`|[^`])*`|[^#\r\n]+)?\s*(?:#.*)?(?:$|$)/mg; // prettier-ignore
         const obj: Record<string, string> = {};
     
         let lines = src.toString('utf8').replace(/\r\n?/mg, '\n'),
@@ -43,6 +44,6 @@ function env() {
     } catch (error) {
         return { error };
     }
-};
+}
 
 export default env;

@@ -2,14 +2,23 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
+    user-select: none;
 }
 
-div#app {
-    --size: 1px;
-    width: calc(224px * 2);
-    height: calc(256px * 2);
-    background: #000;
-    background-image: url(./background-0.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    div#app {
+        width: calc(224px * 2);
+        height: calc(256px * 2);
+        background: #000;
+        background-image: url(./background-0.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
 }

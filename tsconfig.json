@@ -2,14 +2,14 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./server",
+    "outDir": "./dist/",
     "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["./src"],
-  "exclude": ["./app"]
+  "include": ["./server"],
+  "exclude": ["./src"]
 }
