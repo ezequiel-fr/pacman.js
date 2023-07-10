@@ -1,7 +1,8 @@
 * {
-    box-sizing: border-box;
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
     font-family: sans-serif;
     user-select: none;
 }
@@ -11,14 +12,19 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100vw;
     height: 100vh;
 
-    div#app {
-        width: calc(224px * 2);
-        height: calc(256px * 2);
+    canvas#game {
         background: #000;
         background-image: url(./background-0.png);
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-position: 0 32px;
+        background-size: contain;
+    }
+
+    @supports (width: min(1px, 1dvw)) {
+        width: 100dvw;
+        height: 100dvh;
     }
 }

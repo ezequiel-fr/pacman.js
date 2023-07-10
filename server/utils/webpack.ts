@@ -61,7 +61,7 @@ const config: Configuration = {
         rules: [
             // JS/TS Compiler
             {
-                exclude: /build|dist|node_modules|server|types/,
+                exclude: /build|dist|node_modules|server|([a-z]*\.d\.ts)/,
                 test: /\.(js|mjs|ts)$/,
                 use: {
                     loader: 'ts-loader',
@@ -106,7 +106,7 @@ const config: Configuration = {
         }),
     ],
     resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.d.ts', '.js'],
     },
     stats: 'errors-only',
 };

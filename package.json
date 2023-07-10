@@ -22,13 +22,8 @@
   },
   "homepage": "https://github.com/ezequiel-fr/pacman.js#readme",
   "devDependencies": {
-    "@types/jsdom": "^21.1.1",
-    "typescript": "^5.1.6"
-  },
-  "dependencies": {
     "autoprefixer": "^10.4.14",
     "clean-webpack-plugin": "^4.0.0",
-    "colors": "^1.4.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "html-webpack-plugin": "^5.5.3",
@@ -39,7 +34,24 @@
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
     "webpack": "^5.88.1",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "webpack-server": "^0.1.2"
+  },
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
