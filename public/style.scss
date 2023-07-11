@@ -15,12 +15,39 @@ body {
     width: 100vw;
     height: 100vh;
 
-    canvas#game {
-        background: #000;
-        background-image: url(./background-0.png);
-        background-repeat: no-repeat;
-        background-position: 0 32px;
-        background-size: contain;
+    .game {
+        position: relative;
+
+        canvas#app {
+            background: #000;
+            background-image: url(./background-0.png);
+            background-repeat: no-repeat;
+            background-position: 0 32px;
+            background-size: contain;
+        }
+
+        span.player {
+            --direction: 0;
+            top: 0;
+            left: 0;
+            position: absolute;
+            display: block;
+            width: 28px;
+            height: 28px;
+            background: url(./PacMan_4.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotate(calc(90deg * (var(--direction) - 1)));
+            transition: all translate linear;
+        }
+    }
+
+    .resources {
+        display: none;
+
+        img {
+            transform: rotate(.5turn);
+        }
     }
 
     @supports (width: min(1px, 1dvw)) {

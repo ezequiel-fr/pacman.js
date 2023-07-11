@@ -6,20 +6,24 @@ declare global {
     }
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     const game = new Game();
 
-    // Button
+    // Play/pause button
     const gameBtn = document.getElementById('game-btn') as HTMLButtonElement;
-    gameBtn.innerHTML = "Pause";
+    const updateButton = () => gameBtn.innerHTML = window.game.STATE ? "Resume" : "Pause";
 
-    function updateButton() {
-        gameBtn.innerHTML = window.game.STATE ? "Pause" : "Resume";
+    game.on('pause', updateButton);
+    game.on('play', updateButton);
+
+    gameBtn.addEventListener('click', () => {
         window.game[window.game.STATE ? 'pause' : 'resume']();
-    }
+    });
 
-    gameBtn.addEventListener('click', updateButton);
-
+    // Log game instance
     console.log(game);
-    game.start();
+
+    // Start the game
+    await game.start();
+    gameBtn.innerHTML = "Pause";
 });

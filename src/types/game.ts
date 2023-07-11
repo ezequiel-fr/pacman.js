@@ -1,6 +1,10 @@
+
+/** 2D coordinates */
 export type TargetCoords = [number, number];
 
+/** A matrix row */
 export type MatrixLine = number[];
+/** A 2D matrix */
 export type Matrix2D = MatrixLine[];
 
 /** Main colors of each ghosts (Inky, Clyde, Pinky, Blinky) */
@@ -19,11 +23,18 @@ export enum GhostState {
     Scatter,
 }
 
+type Animations<T = boolean> = 'all' | (T extends false ? never : string & {});
+
 /** Animations ID (maze) */
-export type AnimationsID =
+export type MazeAnimations =
     | "all"
     | "dots"
-    | (string & {})
-    | undefined;
+    | Animations<true>;
 
-export type PlayerAnimations = 'all' | 'eating' | 'moving';
+/** Player animations type */
+export type PlayerAnimations = Animations<false> | 'eating' | 'moving' | 'turning';
+
+/** Game events */
+export type GameEventsName = 'play' | 'pause';
+
+export type GameEvents<T = GameEventsName> = (...args: any[]) => void;

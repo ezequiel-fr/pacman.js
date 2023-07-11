@@ -1,9 +1,15 @@
-import { AnimationsID, Matrix2D } from '../types/game';
-import { encode } from '../utils/base64';
+import { Matrix2D, MazeAnimations } from '../types/game';
 
 import Game from './index';
 
 class Maze {
+    public readonly VOID = 0;
+    public readonly BORDER = 1;
+    public readonly DOT = 2;
+    public readonly SUPER_DOT = 3;
+    public readonly GHOSTS_HOUSE = 4;
+    public readonly PORTAL = 5;
+
     public gridSize = 16;
     public map: Matrix2D = [
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -44,10 +50,10 @@ class Maze {
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     ];
 
-    private animations: { fn: Function, id: AnimationsID, time: number }[] = [];
+    private animations: { fn: Function, id: MazeAnimations, time: number }[] = [];
     private ctx: CanvasRenderingContext2D;
     private intervals: {
-        id: AnimationsID;
+        id: MazeAnimations;
         ref: NodeJS.Timer | number;
     }[] = [];
 
@@ -129,7 +135,7 @@ class Maze {
         }
     }
 
-    playAnimations(id: AnimationsID) {
+    playAnimations(id: MazeAnimations) {
         let animations = id === undefined || id === "all"
             ? this.animations
             : this.animations.filter(e => e.id === id);
@@ -143,7 +149,7 @@ class Maze {
         }));
     }
 
-    pauseAnimations(id: AnimationsID) {
+    pauseAnimations(id: MazeAnimations) {
         if (id === undefined || id === "all") {
             this.intervals.forEach(e => clearInterval(e.ref));
             this.intervals = [];
