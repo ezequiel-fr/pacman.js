@@ -52,4 +52,5 @@ package-lock.json
 # Build files
 build/
 dist/
-*.map
+*.css.map
+*.js.map
