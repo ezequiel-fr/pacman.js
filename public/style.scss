@@ -34,7 +34,7 @@ body {
             display: block;
             width: 28px;
             height: 28px;
-            background: url(./PacMan_4.png);
+            // background: url(./PacMan_4.png);
             background-size: contain;
             background-repeat: no-repeat;
             transform: rotate(calc(90deg * (var(--direction) - 1)));
